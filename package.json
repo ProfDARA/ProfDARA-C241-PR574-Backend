@@ -1,0 +1,25 @@
+{
+  "name": "backendpengungsi",
+  "version": "1.0.0",
+  "description": "backend untuk update data pengungsi",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "author": "c241pr574",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.15"
+  }
+}
