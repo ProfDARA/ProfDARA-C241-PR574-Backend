@@ -1,15 +1,19 @@
 const express = require('express');
-const { addRefugee, getAllRefugees, getRefugee, updateRefugee, deleteRefugee } = require('../controllers/refugeeController');
+const { addRefugee, getAllRefugees, getRefugee, updateRefugee, deleteRefugee, searchRefugeeByNama, searchRefugeeByPosko } = require('../controllers/refugeeController');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 
 const router = express.Router();
 
-//router data pengungsi
+// Router data pengungsi
 router.post('/refugee', upload.single('image'), addRefugee);
-router.get('/refugees', getAllRefugees); //list semua data pengungsi
-router.get('/refugee/:id', getRefugee); //get data pengungsi berdasar ID
-router.put('/refugee/:id', updateRefugee); //update data pengungsi
-router.delete('/refugee/:id', deleteRefugee); // hapus pengungsi
+router.get('/refugees', getAllRefugees); // List semua data pengungsi
+router.get('/refugee/:id', getRefugee); // Get data pengungsi berdasar ID
+router.put('/refugee/:id', updateRefugee); // Update data pengungsi
+router.delete('/refugee/:id', deleteRefugee); // Hapus pengungsi
+
+// Search berdasar nama dan posko
+router.get('/refugees/search/bynama', searchRefugeeByNama);
+router.get('/refugees/search/byposko', searchRefugeeByPosko);
 
 module.exports = router;

@@ -1,30 +1,22 @@
-const { predictClassification, loadData, storeData } = require('../services/inferenceService');
-const crypto = require('crypto');
+const { findSimilarFace } = require('../services/inferenceService');
+const { Storage } = require('@google-cloud/storage');
+const config = require('../config/config');
+const storage = new Storage({
+  projectId: config.gcloud.projectId,
+  keyFilename: config.gcloud.keyFilePath
+});
+const bucket = storage.bucket(config.gcloud.storageBucket);
 
-// Predict using model
 exports.postPredict = async (req, res) => {
-  const { image } = req.body;
-  const { model } = req.app.locals;
+  const { file } = req;
   try {
-    const { label, suggestion } = await predictClassification(model, image);
-    const id = crypto.randomUUID();
-    const createdAt = new Date().toISOString();
-
-    const data = { id, result: label, suggestion, createdAt };
-    await storeData(id, data);
-
-    res.status(201).send({ status: "success", message: "Model is predicted successfully", data });
+    const result = await findSimilarFace(file.buffer);
+    if (result) {
+      res.status(200).send({ status: "success", imageName: result.imageName, posko: result.posko, imageUrl: result.imageUrl });
+    } else {
+      res.status(404).send({ status: "fail", message: "No matching refugee found" });
+    }
   } catch (error) {
     res.status(400).send({ status: "fail", message: error.message });
-  }
-};
-
-// Get prediction histories
-exports.getPredictionHistories = async (req, res) => {
-  try {
-    const data = await loadData();
-    res.status(200).send({ status: "success", data });
-  } catch (error) {
-    res.status(500).send({ status: "fail", message: "Failed to get prediction histories" });
   }
 };

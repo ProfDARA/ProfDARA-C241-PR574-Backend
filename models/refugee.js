@@ -12,3 +12,4 @@ class Refugee {
 }
 
 module.exports = Refugee;
+

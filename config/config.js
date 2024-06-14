@@ -16,8 +16,7 @@ const {
   APP_ID,
   GCLOUD_STORAGE_BUCKET,
   GCLOUD_PROJECT_ID,
-  GCLOUD_KEYFILE_PATH,
-  VISION_API_KEY
+  GCLOUD_KEYFILE_PATH
 } = process.env;
 
 assert(PORT, 'PORT is required');
@@ -39,7 +38,6 @@ module.exports = {
   gcloud: {
     storageBucket: GCLOUD_STORAGE_BUCKET,
     projectId: GCLOUD_PROJECT_ID,
-    keyFilePath: GCLOUD_KEYFILE_PATH,
-    visionApiKey: VISION_API_KEY
+    keyFilePath: GCLOUD_KEYFILE_PATH
   }
 };

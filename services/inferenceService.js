@@ -1,43 +1,68 @@
+const faceapi = require('face-api.js');
+const canvas = require('canvas');
+const { Canvas, Image, ImageData } = canvas;
 const { Storage } = require('@google-cloud/storage');
 const config = require('../config/config');
+const fetch = require('node-fetch'); // node 
 const path = require('path');
 const tf = require('@tensorflow/tfjs-node');
+
+
+// untuk menghubungkan dengan Google Cloud Storage
 const storage = new Storage({
   projectId: config.gcloud.projectId,
   keyFilename: path.join(__dirname, '../', config.gcloud.keyFilePath)
 });
 const bucket = storage.bucket(config.gcloud.storageBucket);
 
-const loadRefugeeImages = async () => {
-  const [files] = await bucket.getFiles({ prefix: 'refugee_photos/' });
-  return files;
-};
+faceapi.env.monkeyPatch({ Canvas, Image, ImageData });
 
-const compareFaces = async (inputImageBuffer) => {
-  const client = new vision.ImageAnnotatorClient({
-    keyFilename: config.gcloud.keyFilePath
-  });
+async function loadModel(modelPath) {
+  await faceapi.nets.ssdMobilenetv1.loadFromDisk(modelPath);
+  await faceapi.nets.faceLandmark68Net.loadFromDisk(modelPath);
+  await faceapi.nets.faceRecognitionNet.loadFromDisk(modelPath);
+  console.log('Model loaded successfully');
+}
 
-  const [result] = await client.faceDetection({ image: { content: inputImageBuffer } });
-  const faces = result.faceAnnotations;
+tf.loadGraphModel('https://storage.googleapis.com/c241pr574model/ResNet50V2.json');
+    console.log('Model loaded successfully');
 
-  if (faces.length === 0) {
-    return null;
+
+async function findSimilarFace(inputBuffer) {
+  const img = await canvas.loadImage(inputBuffer);
+  const detections = await faceapi.detectAllFaces(img).withFaceLandmarks().withFaceDescriptors();
+  if (!detections.length) {
+    throw new Error('No faces detected in the input image');
   }
 
-  const refugeeImages = await loadRefugeeImages();
-  const inputTensor = tf.node.decodeImage(inputImageBuffer).resizeNearestNeighbor([224, 224]).expandDims().toFloat();
+  const labeledFaceDescriptors = await loadLabeledImages();
+  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6);
+  const bestMatch = detections.map(d => faceMatcher.findBestMatch(d.descriptor)).find(match => match.distance < 0.6);
 
-  for (const file of refugeeImages) {
-    const fileBuffer = await file.download();
-    const refugeeTensor = tf.node.decodeImage(fileBuffer[0]).resizeNearestNeighbor([224, 224]).expandDims().toFloat();
-    const similarity = model.compare(inputTensor, refugeeTensor);
-    if (similarity > 0.8) { //80% kesamaan model
-      return file.name.split('/')[1];
-    }
+  if (bestMatch) {
+    return { imageName: bestMatch.label, imageUrl: bestMatch.imageUrl };
   }
 
   return null;
-};
+}
 
-module.exports = { compareFaces };
+async function loadLabeledImages() {
+  const [files] = await bucket.getFiles();
+
+  return Promise.all(
+    files.map(async file => {
+      const imgUrl = `https://storage.googleapis.com/${bucket.name}/${file.name}`;
+      const response = await fetch(imgUrl);
+      const buffer = await response.buffer();
+      const img = await canvas.loadImage(buffer);
+      const fullFaceDescription = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
+      if (!fullFaceDescription) {
+        throw new Error(`No faces detected for image ${file.name}`);
+      }
+      const faceDescriptors = [fullFaceDescription.descriptor];
+      return new faceapi.LabeledFaceDescriptors(file.name, faceDescriptors);
+    })
+  );
+}
+
+module.exports = { loadModel, findSimilarFace };
