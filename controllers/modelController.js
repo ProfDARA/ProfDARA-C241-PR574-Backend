@@ -1,7 +1,7 @@
 const { predictClassification, loadData, storeData } = require('../services/inferenceService');
 const crypto = require('crypto');
 
-// Predict using the model
+// Predict using model
 exports.postPredict = async (req, res) => {
   const { image } = req.body;
   const { model } = req.app.locals;

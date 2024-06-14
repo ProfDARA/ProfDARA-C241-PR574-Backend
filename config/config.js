@@ -13,7 +13,11 @@ const {
   PROJECT_ID,
   STORAGE_BUCKET,
   MESSAGING_SENDER_ID,
-  APP_ID
+  APP_ID,
+  GCLOUD_STORAGE_BUCKET,
+  GCLOUD_PROJECT_ID,
+  GCLOUD_KEYFILE_PATH,
+  VISION_API_KEY
 } = process.env;
 
 assert(PORT, 'PORT is required');
@@ -31,5 +35,11 @@ module.exports = {
     storageBucket: STORAGE_BUCKET,
     messagingSenderId: MESSAGING_SENDER_ID,
     appId: APP_ID
+  },
+  gcloud: {
+    storageBucket: GCLOUD_STORAGE_BUCKET,
+    projectId: GCLOUD_PROJECT_ID,
+    keyFilePath: GCLOUD_KEYFILE_PATH,
+    visionApiKey: VISION_API_KEY
   }
 };

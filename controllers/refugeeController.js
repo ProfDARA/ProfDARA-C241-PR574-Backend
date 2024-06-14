@@ -1,11 +1,15 @@
 const Refugee = require('../models/refugee');
 const db = require('../services/firestoreService');
+const { uploadImage } = require('../services/storageService');
 
 // Add refugee
 exports.addRefugee = async (req, res) => {
-  const { id, nama, jk, usia, kepalakk, asal, posko, catatan } = req.body;
+  const { id, nama, jk, usia, asal, posko, catatan } = req.body;
+  const { file } = req;
+
   try {
-    const refugee = new Refugee(id, nama, jk, usia, kepalakk, asal, posko, catatan);
+    const imageUrl = await uploadImage(file, id);
+    const refugee = new Refugee(id, nama, jk, usia, asal, posko, catatan, imageUrl);
     await db.collection('refugees').doc(id).set(refugee);
     res.status(201).send(refugee);
   } catch (error) {

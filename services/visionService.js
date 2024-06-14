@@ -1,7 +1,13 @@
-const { Storage } = require('@google-cloud/storage');
+const vision = require('@google-cloud/vision');
 const config = require('../config/config');
+const { Storage } = require('@google-cloud/storage');
 const path = require('path');
 const tf = require('@tensorflow/tfjs-node');
+
+const client = new vision.ImageAnnotatorClient({
+  keyFilename: config.gcloud.keyFilePath
+});
+
 const storage = new Storage({
   projectId: config.gcloud.projectId,
   keyFilename: path.join(__dirname, '../', config.gcloud.keyFilePath)
@@ -14,10 +20,6 @@ const loadRefugeeImages = async () => {
 };
 
 const compareFaces = async (inputImageBuffer) => {
-  const client = new vision.ImageAnnotatorClient({
-    keyFilename: config.gcloud.keyFilePath
-  });
-
   const [result] = await client.faceDetection({ image: { content: inputImageBuffer } });
   const faces = result.faceAnnotations;
 
@@ -32,7 +34,7 @@ const compareFaces = async (inputImageBuffer) => {
     const fileBuffer = await file.download();
     const refugeeTensor = tf.node.decodeImage(fileBuffer[0]).resizeNearestNeighbor([224, 224]).expandDims().toFloat();
     const similarity = model.compare(inputTensor, refugeeTensor);
-    if (similarity > 0.8) { //80% kesamaan model
+    if (similarity > 0.8) {
       return file.name.split('/')[1];
     }
   }
