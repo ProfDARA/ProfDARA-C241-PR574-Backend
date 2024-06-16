@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   res.send('API Backend is running');
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const HOST = config.host || 'localhost';
 
 const modelPath = path.join(__dirname, 'weight');
