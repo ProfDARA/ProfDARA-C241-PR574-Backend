@@ -1,350 +1,440 @@
 {
 	"info": {
-	  "name": "C241-PR574-Backend-API",
-	  "_postman_id": "c241pr574 backend",
-	  "description": "postman untuk testing the C241-PR574-Backend-API",
-	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "63a41823-8c9c-498b-9394-2dc123aac32e",
+		"name": "C241-PR574-Backend-API ML test",
+		"description": "postman untuk testing the C241-PR574-Backend-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34739485"
 	},
 	"item": [
-	  {
-		"name": "Signup",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "application/json"
-			}
-		  ],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\n\t\"email\": \"testuser@example.com\",\n\t\"password\": \"password123\"\n}"
-		  },
-		  "url": {
-			"raw": "http://localhost:8080/signup",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["signup"]
-		  }
-		}
-	  },
-	  {
-		"name": "Signin",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "application/json"
-			}
-		  ],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\n\t\"email\": \"testuser@example.com\",\n\t\"password\": \"password123\"\n}"
-		  },
-		  "url": {
-			"raw": "http://localhost:8080/signin",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["signin"]
-		  }
-		}
-	  },
-	  {
-		"name": "Get User",
-		"request": {
-		  "method": "GET",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/user/:uid",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["user", ":uid"],
-			"variable": [
-			  {
-				"key": "uid",
-				"value": "USER_UID"
-			  }
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@gmail.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/auth/signup",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@gmail.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/auth/signin",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/auth/user/:uid",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"user",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "ZlhvKkerrBOADKDIc9K8DOcWj263"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/auth/user/:uid",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"auth",
+								"user",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "YVIr1kDeSyfSyPLhzZrIFAaRB4y1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
 			]
-		  }
-		}
-	  },
-	  {
-		"name": "Delete User",
-		"request": {
-		  "method": "DELETE",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/user/:uid",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["user", ":uid"],
-			"variable": [
-			  {
-				"key": "uid",
-				"value": "USER_UID"
-			  }
+		},
+		{
+			"name": "Model",
+			"item": [
+				{
+					"name": "Predict",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Danang ARA/Downloads/basuki test.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/model/predict",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"model",
+								"predict"
+							]
+						}
+					},
+					"response": []
+				}
 			]
-		  }
-		}
-	  },
-	  {
-		"name": "Add Refugee",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "multipart/form-data"
-			}
-		  ],
-		  "body": {
-			"mode": "formdata",
-			"formdata": [
-			  {
-				"key": "nama",
-				"value": "John Doe",
-				"type": "text"
-			  },
-			  {
-				"key": "jk",
-				"value": "Male",
-				"type": "text"
-			  },
-			  {
-				"key": "usia",
-				"value": "30",
-				"type": "text"
-			  },
-			  {
-				"key": "asal",
-				"value": "City A",
-				"type": "text"
-			  },
-			  {
-				"key": "posko",
-				"value": "Posko B",
-				"type": "text"
-			  },
-			  {
-				"key": "catatan",
-				"value": "Some notes here",
-				"type": "text"
-			  },
-			  {
-				"key": "image",
-				"type": "file",
-				"src": "path/to/image.jpg"
-			  }
+		},
+		{
+			"name": "Refugee",
+			"item": [
+				{
+					"name": "Add Refugee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama",
+									"value": "Basuki Hadimuljono test 2",
+									"type": "text"
+								},
+								{
+									"key": "jk",
+									"value": "Laki-Laki",
+									"type": "text"
+								},
+								{
+									"key": "usia",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "asal",
+									"value": "Desa Ketandan, Kemalang, Klaten, Jawa Tengah",
+									"type": "text"
+								},
+								{
+									"key": "posko",
+									"value": "Posko 1",
+									"type": "text"
+								},
+								{
+									"key": "catatan",
+									"value": "Masih menijau aplikasi",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Danang ARA/Downloads/basuki test.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/register",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Refugees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/refugees",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"refugees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Refugee by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/refugee/:id",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"refugee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "oew2HPKd8x32SxBR6DWd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Refugee by Nama",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/refugees/search/bynama?nama=Basuki",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"refugees",
+								"search",
+								"bynama"
+							],
+							"query": [
+								{
+									"key": "nama",
+									"value": "Basuki"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Refugee by Posko",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/refugees/search/byposko?posko=Posko 2",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"refugees",
+								"search",
+								"byposko"
+							],
+							"query": [
+								{
+									"key": "posko",
+									"value": "Posko 2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Refugee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"usia\": \"60\",\n        \"asal\": \"Desa Ketandan, Kemalang, Klaten, Jawa Tengah\",\n        \"jk\": \"Laki-Laki\",\n        \"nama\": \"Basuki Hadimuljono\",\n        \"posko\": \"Posko 2\",\n        \"imageUrl\": \"https://storage.googleapis.com/c241pr574.appspot.com/Basuki_Hadimuljono_Posko_1_oew2HPKd8x32SxBR6DWd.jpg\",\n        \"catatan\": \"masih meninjau aplikasi\"\n    }"
+						},
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/refugee/:id",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"refugee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "oew2HPKd8x32SxBR6DWd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Refugee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://c241pr574backend-xd67kjleiq-et.a.run.app/refugee/refugee/:id",
+							"protocol": "https",
+							"host": [
+								"c241pr574backend-xd67kjleiq-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"refugee",
+								"refugee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0vUBRe4uUsIMVGTR1Yxg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
 			]
-		  },
-		  "url": {
-			"raw": "http://localhost:8080/refugee",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugee"]
-		  }
 		}
-	  },
-	  {
-		"name": "Get All Refugees",
-		"request": {
-		  "method": "GET",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/refugees",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugees"]
-		  }
-		}
-	  },
-	  {
-		"name": "Get Refugee by ID",
-		"request": {
-		  "method": "GET",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/refugee/:id",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugee", ":id"],
-			"variable": [
-			  {
-				"key": "id",
-				"value": "REFUGEE_ID"
-			  }
-			]
-		  }
-		}
-	  },
-	  {
-		"name": "Search Refugee by Nama",
-		"request": {
-		  "method": "GET",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/refugees/search/bynama?nama=John",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugees", "search", "bynama"],
-			"query": [
-			  {
-				"key": "nama",
-				"value": "John"
-			  }
-			]
-		  }
-		}
-	  },
-	  {
-		"name": "Search Refugee by Posko",
-		"request": {
-		  "method": "GET",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/refugees/search/byposko?posko=Posko B",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugees", "search", "byposko"],
-			"query": [
-			  {
-				"key": "posko",
-				"value": "Posko B"
-			  }
-			]
-		  }
-		}
-	  },
-	  {
-		"name": "Update Refugee",
-		"request": {
-		  "method": "PUT",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "application/json"
-			}
-		  ],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\n\t\"nama\": \"John Doe Updated\",\n\t\"usia\": 31\n}"
-		  },
-		  "url": {
-			"raw": "http://localhost:8080/refugee/:id",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugee", ":id"],
-			"variable": [
-			  {
-				"key": "id",
-				"value": "REFUGEE_ID"
-			  }
-			]
-		  }
-		}
-	  },
-	  {
-		"name": "Delete Refugee",
-		"request": {
-		  "method": "DELETE",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/refugee/:id",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["refugee", ":id"],
-			"variable": [
-			  {
-				"key": "id",
-				"value": "REFUGEE_ID"
-			  }
-			]
-		  }
-		}
-	  },
-	  {
-		"name": "Predict",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "multipart/form-data"
-			}
-		  ],
-		  "body": {
-			"mode": "formdata",
-			"formdata": [
-			  {
-				"key": "image",
-				"type": "file",
-				"src": "path/to/image.jpg"
-			  }
-			]
-		  },
-		  "url": {
-			"raw": "http://localhost:8080/predict",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["predict"]
-		  }
-		}
-	  },
-	  {
-		"name": "Find Similar Face",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "multipart/form-data"
-			}
-		  ],
-		  "body": {
-			"mode": "formdata",
-			"formdata": [
-			  {
-				"key": "image",
-				"type": "file",
-				"src": "path/to/image.jpg"
-			  }
-			]
-		  },
-		  "url": {
-			"raw": "http://localhost:8080/findSimilarFace",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["findSimilarFace"]
-		  }
-		}
-	  },
-	  {
-		"name": "Get Prediction Histories",
-		"request": {
-		  "method": "GET",
-		  "header": [],
-		  "url": {
-			"raw": "http://localhost:8080/predict/histories",
-			"protocol": "http",
-			"host": ["localhost"],
-			"port": "8080",
-			"path": ["predict", "histories"]
-		  }
-		}
-	  }
 	]
-  }
+}
