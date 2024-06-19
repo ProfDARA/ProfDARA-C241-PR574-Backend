@@ -1,0 +1,350 @@
+{
+	"info": {
+	  "name": "C241-PR574-Backend-API",
+	  "_postman_id": "c241pr574 backend",
+	  "description": "postman untuk testing the C241-PR574-Backend-API",
+	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+	  {
+		"name": "Signup",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n\t\"email\": \"testuser@example.com\",\n\t\"password\": \"password123\"\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/signup",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["signup"]
+		  }
+		}
+	  },
+	  {
+		"name": "Signin",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n\t\"email\": \"testuser@example.com\",\n\t\"password\": \"password123\"\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/signin",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["signin"]
+		  }
+		}
+	  },
+	  {
+		"name": "Get User",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/user/:uid",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["user", ":uid"],
+			"variable": [
+			  {
+				"key": "uid",
+				"value": "USER_UID"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Delete User",
+		"request": {
+		  "method": "DELETE",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/user/:uid",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["user", ":uid"],
+			"variable": [
+			  {
+				"key": "uid",
+				"value": "USER_UID"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Add Refugee",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "multipart/form-data"
+			}
+		  ],
+		  "body": {
+			"mode": "formdata",
+			"formdata": [
+			  {
+				"key": "nama",
+				"value": "John Doe",
+				"type": "text"
+			  },
+			  {
+				"key": "jk",
+				"value": "Male",
+				"type": "text"
+			  },
+			  {
+				"key": "usia",
+				"value": "30",
+				"type": "text"
+			  },
+			  {
+				"key": "asal",
+				"value": "City A",
+				"type": "text"
+			  },
+			  {
+				"key": "posko",
+				"value": "Posko B",
+				"type": "text"
+			  },
+			  {
+				"key": "catatan",
+				"value": "Some notes here",
+				"type": "text"
+			  },
+			  {
+				"key": "image",
+				"type": "file",
+				"src": "path/to/image.jpg"
+			  }
+			]
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/refugee",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugee"]
+		  }
+		}
+	  },
+	  {
+		"name": "Get All Refugees",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/refugees",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugees"]
+		  }
+		}
+	  },
+	  {
+		"name": "Get Refugee by ID",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/refugee/:id",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugee", ":id"],
+			"variable": [
+			  {
+				"key": "id",
+				"value": "REFUGEE_ID"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Search Refugee by Nama",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/refugees/search/bynama?nama=John",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugees", "search", "bynama"],
+			"query": [
+			  {
+				"key": "nama",
+				"value": "John"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Search Refugee by Posko",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/refugees/search/byposko?posko=Posko B",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugees", "search", "byposko"],
+			"query": [
+			  {
+				"key": "posko",
+				"value": "Posko B"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Update Refugee",
+		"request": {
+		  "method": "PUT",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/json"
+			}
+		  ],
+		  "body": {
+			"mode": "raw",
+			"raw": "{\n\t\"nama\": \"John Doe Updated\",\n\t\"usia\": 31\n}"
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/refugee/:id",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugee", ":id"],
+			"variable": [
+			  {
+				"key": "id",
+				"value": "REFUGEE_ID"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Delete Refugee",
+		"request": {
+		  "method": "DELETE",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/refugee/:id",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["refugee", ":id"],
+			"variable": [
+			  {
+				"key": "id",
+				"value": "REFUGEE_ID"
+			  }
+			]
+		  }
+		}
+	  },
+	  {
+		"name": "Predict",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "multipart/form-data"
+			}
+		  ],
+		  "body": {
+			"mode": "formdata",
+			"formdata": [
+			  {
+				"key": "image",
+				"type": "file",
+				"src": "path/to/image.jpg"
+			  }
+			]
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/predict",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["predict"]
+		  }
+		}
+	  },
+	  {
+		"name": "Find Similar Face",
+		"request": {
+		  "method": "POST",
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "multipart/form-data"
+			}
+		  ],
+		  "body": {
+			"mode": "formdata",
+			"formdata": [
+			  {
+				"key": "image",
+				"type": "file",
+				"src": "path/to/image.jpg"
+			  }
+			]
+		  },
+		  "url": {
+			"raw": "http://localhost:8080/findSimilarFace",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["findSimilarFace"]
+		  }
+		}
+	  },
+	  {
+		"name": "Get Prediction Histories",
+		"request": {
+		  "method": "GET",
+		  "header": [],
+		  "url": {
+			"raw": "http://localhost:8080/predict/histories",
+			"protocol": "http",
+			"host": ["localhost"],
+			"port": "8080",
+			"path": ["predict", "histories"]
+		  }
+		}
+	  }
+	]
+  }
