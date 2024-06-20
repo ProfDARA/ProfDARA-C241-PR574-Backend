@@ -1,0 +1,266 @@
+/* Global reset and basic styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: auto; 
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffaf81; /* Orange background */
+}
+
+.container.mt-5
+{
+    padding-top: 10px;
+}
+
+/* Login container styles */
+.login-container {
+    text-align: center;
+    background-color: #ffaf81; /* Orange background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow for container */
+    width: 400px; /* Adjust width as needed */
+}
+
+.login-container .logo {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+/* Form login dan register */
+#login-form {
+    width: 95%;
+    align-items: center;
+}
+
+#register-form {
+    width: 95%;
+    align-items: center;
+}
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust gap between inputs */
+}
+
+#search-face{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.btn-Nav{
+    background-color: #f36100;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Additional styles for other containers */
+.container {
+    padding: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Example style for search container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffaf81;
+    justify-content: center;
+}
+
+/* Ensure the navbar stays on top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff; 
+    z-index: 1030; 
+}
+
+/* Styling for the logo */
+.logo {
+    height: 50px; /* Adjust the height as needed */
+    width: 50px;
+    width: auto;
+}
+
+/* Center the navigation items */
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #ffaf81; 
+}
+
+/* Navbar links styling */
+.nav-link {
+    color: #000000;
+    padding: 0.5rem 1rem;
+    transition: color 0.2s;
+    row-gap: 5px;
+}
+
+/* Navbar links hover effect */
+.nav-link:hover {
+    color: #ffffff
+}
+
+/* Add padding to the top of the page content to account for the fixed navbar */
+.container.mt-5.pt-5 {
+    padding-top: 7rem; 
+}
+
+.container.mt-5 
+{
+    padding-top: 3rem; 
+}
+
+/* card pengungsi */
+.card-img {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    
+
+
+}
+
+/* card pengungsi foto */
+.col-md-4
+{
+    justify-content: center;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    min-width: 500px;
+    max-width: 500px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    min-width: 500px;
+    max-width: 500px;
+}
+
+/* tombol edit dan delete */
+.btn.btn-warning.btn-sm
+{
+    /* Your styles here */
+    background-color: #1b00b4; 
+    color: white;
+    width: 100px;
+    height: 50px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px
+}
+
+.btn.btn-danger.btn-sm{
+    background-color: #c72727; 
+    color: white;
+    width: 100px;
+    height: 50px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px
+
+}
+
+
+
+/* Media query adjustments for responsive design */
+@media (max-width: 992px) {
+    .navbar-nav .nav-item {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        padding: 0.5rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .col-md-4,
+    .card-body {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .btn.btn-warning.btn-sm,
+    .btn.btn-danger.btn-sm {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .container.mt-5.pt-5 {
+        padding-top: 5rem;
+    }
+}

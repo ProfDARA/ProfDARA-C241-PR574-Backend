@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data Pengungsi</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse justify-content-center">
+                <div class="navbar-nav">
+                    <div class="nav-item">
+                        <a class="nav-link btn btn-Nav" href="input.html">Input Pengungsi</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link btn btn-Nav" href="search.html">Cari Pengungsi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5 pt-5">
+        <form id="input-form" class="card p-4 mt-5">
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="jk">Jenis Kelamin</label>
+                <select id="jk" class="form-control" required>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="usia">Usia</label>
+                <input type="number" id="usia" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="asal_daerah">Asal Daerah</label>
+                <input type="text" id="asal_daerah" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="posko">Posko Pengungsian</label>
+                <input type="text" id="posko" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="catatan">Catatan</label>
+                <textarea id="catatan" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Masukan Foto</label>
+                <input type="file" id="image" class="form-control" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Daftarkan</button>
+        </form>
+    </div>
+    <script src="js/input.js"></script>
+</body>
+</html>
