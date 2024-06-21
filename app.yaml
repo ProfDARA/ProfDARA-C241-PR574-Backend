@@ -1,0 +1,19 @@
+runtime: python39  # You can use other runtimes like 'python38', 'python37', etc.
+
+handlers:
+- url: /CSS
+  static_dir: CSS
+
+- url: /Images
+  static_dir: Images
+
+- url: /Js
+  static_dir: Js
+
+- url: /
+  static_files: login.html
+  upload: login.html
+
+- url: /(.*)
+  static_files: \1
+  upload: (.*)
